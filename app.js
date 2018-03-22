@@ -6,8 +6,8 @@
 // Dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
-var routes = require('./routes');
-var routes2 = require('./routes2');
+var routes = require('./routes/routes');
+var routes2 = require('./routes/routes2');
 var swaggerJSDoc = require('swagger-jsdoc');
 
 // Initialize express
@@ -35,7 +35,7 @@ var options = {
   // Import swaggerDefinitions
   swaggerDefinition: swaggerDefinition,
   // Path to the API docs
-  apis: ['*.js', '*.yaml'],
+  apis: ['./routes/*.js', './routes/*.yaml'],
 };
 
 // Initialize swagger-jsdoc -> returns validated swagger spec in json format
