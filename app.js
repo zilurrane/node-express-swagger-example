@@ -10,6 +10,8 @@ var routes = require('./routes/routes');
 var routes2 = require('./routes/routes2');
 var swaggerJSDoc = require('swagger-jsdoc');
 
+const swaggerUi = require('swagger-ui-express');
+
 // Initialize express
 var app = express();
 app.use(bodyParser.json()); // To support JSON-encoded bodies
@@ -40,6 +42,8 @@ var options = {
 
 // Initialize swagger-jsdoc -> returns validated swagger spec in json format
 var swaggerSpec = swaggerJSDoc(options);
+
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Serve swagger docs the way you like (Recommendation: swagger-tools)
 app.get('/api-docs.json', function(req, res) {
